@@ -1,0 +1,17 @@
+[
+	{
+		"produto":{
+				"descricao":"Produto teste 001",
+				"codigo":"001",
+				"valor":10.00
+			}
+	},
+	{
+		"produto":{
+				"id": 2,
+				"descricao":"Produto teste 002",
+				"codigo":"002",
+				"valor":20.00
+			}
+	}
+]
