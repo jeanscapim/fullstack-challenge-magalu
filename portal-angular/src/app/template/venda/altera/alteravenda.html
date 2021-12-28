@@ -1,0 +1,58 @@
+<div class="col-sm-12 col-lg-12">
+    <h2 class="col-md-12">
+        <strong>Alterar venda para a loja: {{loja.descricao}}</strong>
+    </h2>
+    <ol class="breadcrumb col-md-10">
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/']">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/lojas', 'listagem']">Lojas</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/vendas', 'listagem', loja.id]">Vendas</a>
+        </li>
+        <li class="breadcrumb-item active">Alterar</li>
+    </ol>
+    <div class="col-md-2 m-b-md">
+        <a class="btn btn-default" [routerLink]="['/lojas', 'listagem']" title="Voltar para lojas">Voltar para lojas</a>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <form [formGroup]="vendaForm" (submit)="alteraVenda($event)">
+                        <div class="form-group col-md-12">
+                            <label for="">Descrição:
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input id="descricao_produto" name="descricao_produto" formControlName="descricao_produto" [(ngModel)]="venda.descricao_produto"
+                                [(value)]="venda.descricao_produto" type="text" class="form-control" required placeholder="Informe a descrição do produtio da venda.">
+                            <span *ngIf="hasError('descricao_produto')" [ngClass]="{'text-danger': hasError('descricao_produto')}">Informe uma descrição do produto válida.</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Código:
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input id="codigo_produto" name="codigo_produto" formControlName="codigo_produto" [(ngModel)]="venda.codigo_produto" type="text"
+                                [(value)]="venda.codigo_produto" class="form-control" required placeholder="Informe o código do produtio da venda.">
+                            <span *ngIf="hasError('codigo_produto')" [ngClass]="{'text-danger': hasError('codigo_produto')}">Informe um código do produto válido.</span>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="">Valor de venda:
+                                <span class="text-danger">*</span>
+                            </label>
+                            <input id="valor_produto" name="valor_produto" formControlName="valor_produto" [(ngModel)]="venda.valor_produto" type="text"
+                                [(value)]="venda.valor_produto" class="form-control" required placeholder="Informe o valor da venda do produto.">
+                            <span *ngIf="hasError('valor_produto')" [ngClass]="{'text-danger': hasError('valor_produto')}">Informe um valor de venda válido.</span>
+                        </div>
+                        <div class="text-right col-md-12">
+                            <button type="submit" class="btn btn-success" title="Alterar venda">Alterar venda</button>
+                            <a class="btn btn-default" [routerLink]="['/vendas', 'listagem', loja.id]" title="Voltar">Voltar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

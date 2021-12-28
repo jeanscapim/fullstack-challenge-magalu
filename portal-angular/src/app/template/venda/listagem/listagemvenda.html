@@ -1,0 +1,101 @@
+<div class="col-sm-12 col-lg-12">
+    <h2 class="col-md-12">
+        <strong>Vendas da loja: {{loja.descricao}}</strong>
+    </h2>
+    <ol class="breadcrumb col-md-10">
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/']">Home</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/lojas', 'listagem']">Lojas</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a [routerLink]="['/vendas', 'listagem', loja.id]">Vendas</a>
+        </li>
+        <li class="breadcrumb-item active">Listagem</li>
+    </ol>
+    <div class="col-md-2 m-b-md">
+        <a class="btn btn-default" [routerLink]="['/lojas', 'listagem']" title="Voltar para lojas">Voltar para lojas</a>
+    </div>
+    <div class="ibox-content m-b-sm border-bottom col-md-12">
+        <div class="row">
+            <h3 class="col-md-2">
+                <i class="fa fa-filter" aria-hidden="true"></i> Descrição</h3>
+            <div class="col-md-8">
+                <div class="input-group h2">
+                    <input type="text" [(ngModel)]="q" placeholder="Informe a descrição ou código do produto para buscar." class="form-control">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" (click)="buscarVendas(q, $event)">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <a class="btn btn-success h2" [routerLink]="['/vendas', 'cadastra', loja.id]" title="Registrar nova venda">Registrar nova venda</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Código do produto</th>
+                                <th>Descrição do produto</th>
+                                <th class="text-center">Valor de venda</th>
+                                <th class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let venda of vendas">
+                                <td>{{venda.id}}</td>
+                                <td>{{venda.codigo_produto}}</td>
+                                <td>{{venda.descricao_produto}}</td>
+                                <td class="text-center">{{venda.valor_produto |  currencyFormat}}</td>
+                                <td class="text-center">
+                                    <a [routerLink]="['/vendas', 'altera', venda.id, loja.id]" class="btn btn-xs btn-primary" title="Alterar ({{venda.descricao_produto}})">Alterar</a>
+                                    <a (click)="removeVenda(venda, $event)" class="btn btn-xs btn-danger" title="Excluir ({{venda.descricao_produto}})">Excluir</a>
+                                </td>
+                            </tr>
+                            <tr class="text-center" *ngIf="vendas.length == 0">
+                                <td colspan="6">
+                                    <strong>Nenhuma venda encontrada para a loja {{loja.descricao}}!</strong>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <!-- <tfoot>
+                            <tr>
+                                <td colspan="6">
+                                    <ul class="pagination pull-right">
+                                        <li class="disabled">
+                                            <a data-page="first" href="#first">«</a>
+                                        </li>
+                                        <li class="disabled">
+                                            <a data-page="prev" href="#prev">‹</a>
+                                        </li>
+                                        <li class="active">
+                                            <a data-page="0" href="#">1</a>
+                                        </li>
+                                        <li>
+                                            <a data-page="1" href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a data-page="next" href="#next">›</a>
+                                        </li>
+                                        <li>
+                                            <a data-page="last" href="#last">»</a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tfoot> -->
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
