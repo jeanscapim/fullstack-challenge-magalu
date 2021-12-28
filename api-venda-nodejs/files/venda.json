@@ -1,0 +1,15 @@
+[
+	{
+        "lojas_id": 1,
+		"descricao_produto": "Venda teste 001",
+		"codigo_produto": "001",
+		"valor_produto": 10.00
+	},
+	{
+		"id": 2,
+        "lojas_id": 1,
+		"descricao_produto": "Venda teste 002",
+		"codigo_produto": "002",
+		"valor_produto": 20.00
+	}
+]
