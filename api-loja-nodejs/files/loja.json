@@ -1,0 +1,13 @@
+[
+	{
+		"descricao": "Loja teste 001",
+		"codigo": "001",
+		"cep": 14095020
+	},
+	{
+		"id": 2,
+		"descricao": "Loja teste 002",
+		"codigo": "002",
+		"cep": 14095020
+	}
+]
